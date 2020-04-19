@@ -1,0 +1,40 @@
+
+<div class="container-fluid" style="padding-top: 3.5em;">
+  <div class="row text-center mb-3">
+    <div class="col-md-12">
+      <h2>Top Video Lists</h2>
+      <hr>
+    </div>
+  </div>
+  <div *ngFor="let categ of this.contentList" class="swiper-container">
+    <h4 style="padding-left: 1em;">{{categ.category.categoryType}}</h4>
+    <swiper [config]="config">
+
+      <div class="swiper-wrapper">
+        <div *ngFor="let movie of categ.content" class="swiper-slide">
+          <div class="card">
+            <div class="card-img"><img src={{movie.image}}>
+
+            </div>
+            <div class="card-body">
+              <h5>{{movie.title}}</h5>
+              <p style="color:black">IMDb rating: {{movie.rating}}</p>
+
+              <!-- <button type="button" class="btn btn-outline-danger btn-block btn-sm stretched-link" (click)="playVideo()">
+                watch</button> -->
+                <a [routerLink]="['player']" class="stretched-link" ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- Add Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+    </swiper>
+  </div>
+</div>
